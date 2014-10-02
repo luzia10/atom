@@ -125,6 +125,9 @@ class TextEditorView extends View
     @model.destroy() unless keepData
     super
 
+  trigger: (commandName) ->
+    super unless atom.commands.dispatch(@element, commandName)
+
   scrollTop: (scrollTop) ->
     if scrollTop?
       @model.setScrollTop(scrollTop)

@@ -147,9 +147,15 @@ class CommandRegistry
   #
   # * `target` The DOM node at which to start bubbling the command event.
   # * `commandName` {String} indicating the name of the command to dispatch.
+  #
+  # Returns a {Boolean} indicating whether any listeners were invoked.
   dispatch: (target, commandName) ->
     event = new CustomEvent(commandName, bubbles: true)
-    eventWithTarget = Object.create(event, target: value: target)
+    eventWithTarget = Object.create event,
+      target: value: target
+      stopPropagation: value: ->
+      stopImmediatePropagation: value: ->
+      preventDefault: value: ->
     @handleCommandEvent(eventWithTarget)
 
   getSnapshot: ->
