@@ -75,7 +75,7 @@ beforeEach ->
 
   spyOn(atom, 'saveSync')
   atom.syntax.clearGrammarOverrides()
-  atom.syntax.clearProperties()
+  atom.config.clearScopedSettings()
 
   spy = spyOn(atom.packages, 'resolvePackagePath').andCallFake (packageName) ->
     if specPackageName and packageName is specPackageName
