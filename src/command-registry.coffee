@@ -185,6 +185,8 @@ class CommandRegistry
         originalEvent.stopImmediatePropagation()
         propagationStopped = true
         immediatePropagationStopped = true
+      abortKeyBinding: value: ->
+        originalEvent.abortKeyBinding?()
       disableInvokedListeners: value: ->
         listener.enabled = false for listener in invokedListeners
         -> listener.enabled = true for listener in invokedListeners
